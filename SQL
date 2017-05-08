@@ -1,0 +1,22 @@
+CREATE TABLE clientes (id INTEGER PRIMARY KEY, cpf INTEGER,first_name TEXT, last_name TEXT, telefone INTEGER, empresa_associada TEXT, cnpj_empresa INTEGER);
+
+
+
+CREATE TABLE projeto (
+client_id INTEGER,
+prazo_entrega TEXT,
+valor REAL,
+descrição TEXT,
+FOREIGN KEY(client_id) REFERENCES clientes(id)
+);
+
+
+
+
+INSERT INTO clientes (id, cpf, first_name, last_name, telefone)VALUES (1,12726621611,"jose","Silva",1);
+INSERT INTO clientes (id, cpf, first_name, last_name, telefone)VALUES (2,12756621611,"maria","Silva",2);
+INSERT INTO projeto VALUES (1,"05/02/17",5000,"um projeto");
+INSERT INTO projeto VALUES (2,"09/02/17",5800,"outro projeto");
+
+SELECT * FROM clientes JOIN projeto ON id = client_id;
+SELECT first_name, last_name, telefone, empresa_associada, cnpj_empresa from clientes;
