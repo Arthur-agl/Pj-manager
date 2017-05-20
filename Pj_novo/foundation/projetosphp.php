@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Project Manager 0.0.1</title>
     <link rel="stylesheet" href="./css/foundation.css">
-	<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel='stylesheet' type='text/css'>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  </head>
+	<?php include './connect.php'; ?>
+	</head>
 <body>
 
 
@@ -22,9 +22,9 @@
   <div class="top-bar-left">
     <ul class="menu">
       <li><a style="border-right: 1px solid #aaa9a9;" >Empresa</a></li>
-      <li><a href="./index.html"> <i class="fi-home"></i> Home </a></li>
-      <li class="active"><a href="#"> <i class="fi-torsos-all"></i> Clientes</a>
-      <li><a href="./projetos.html"> <i class="fi-page-copy"></i> Projetos</a></li>
+      <li><a href="./index.php"> <i class="fi-home"></i> Home </a></li>
+      <li><a href="./clientesphp.php"> <i class="fi-torsos-all"></i> Clientes</a>
+      <li class="active"><a href="#"> <i class="fi-page-copy"></i> Projetos</a></li>
     </ul>
   </div>
 </div>
@@ -36,55 +36,41 @@
 <br>
 
 <div class="container" align ="center">
-	<table class = "table">
-      <?php $result = mysqli_query($con,"SELECT * FROM cliente");
+	<div class="row">
+		<?php	
+        $result = mysqli_query($con,"SELECT projeto.description, CONCAT_WS(\" \",cliente.first_name,cliente.last_name) AS `nome`, projeto.data_assinatura, projeto.valor, projeto.data_entrega FROM `projeto` INNER JOIN `cliente` ON cliente.idcliente = projeto.cliente_assoc ORDER BY data_entrega");
 
-echo "<table border='1'>
-<tr>
-<th>Firstname</th>
-<th>Lastname</th>
-<th>cpf</th>
-<th>telefone</th>
-<th>email</th>
-</tr>";
+		echo "<table class ='hover'>
+		</thead>
+		<tr>
+		<th>Descrição</th>
+		<th>Cliente</th>
+		<th>Assinado em</th>
+		<th>Valor</th>
+		<th>Entrega prevista</th>
+		</tr>
+		</thead>
+		<tbody>";
 
-
-while($row = mysqli_fetch_array($result))
-{
-echo "<tr>";
-echo "<td>" . $row['first_name'] . "</td>";
-echo "<td>" . $row['last_name'] . "</td>";
-echo "<td>" . $row['cpf'] . "</td>";
-echo "<td>" . $row['telefone'] . "</td>";
-echo "<td>" . $row['email'] . "</td>";
-echo "</tr>"; 
-?>     
-  </table>
+		while($row = mysqli_fetch_array($result))
+		{
+		echo "<tr>";
+		echo "<td>" . $row['description'] . "</td>";
+		echo "<td>" . $row['nome'] . "</td>";
+		echo "<td>" . $row['data_assinatura'] . "</td>";
+		echo "<td>" . $row['valor'] . "</td>";
+		echo "<td>" . $row['data_entrega'] . "</td>";
+		echo "</tr>";
+		}
+		echo "</tbody>
+		</table>"; ?>
+	</div>
 </div>
 
 <footer>
 <div class="row expanded callout secondary">
-<div class="large-4 columns">
-
-
 </div>
 
-
-</div>
-<div class="row expanded">
-<div class="medium-6 columns">
-<ul class="menu">
-<li><a href="#">Legal</a></li>
-<li><a href="#">Partner</a></li>
-<li><a href="#">Explore</a></li>
-</ul>
-</div>
-<div class="medium-6 columns">
-<ul class="menu align-right">
-<!--<li class="menu-text"> Copyright © 2099 Random Mag </li> -->
-</ul>
-</div>
-</div>
 </footer>
 
 
