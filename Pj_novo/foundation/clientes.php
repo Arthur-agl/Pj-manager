@@ -48,6 +48,7 @@
 				<th>Telefone</th>
 				<th>E-mail</th>
 				<th>Ação</th>
+				<th></th>
         	</tr>
 		</thead> 
 		<tbody>
@@ -57,14 +58,39 @@
 
 				while($row = mysqli_fetch_array($result))
 				{
-					echo "<tr>";
-					echo "<td>" . $row['first_name'] . "</td>";
-					echo "<td>" . $row['last_name'] . "</td>";
-					echo "<td>" . $row['cpf'] . "</td>";
-					echo "<td>" . $row['telefone'] . "</td>";
-					echo "<td>" . $row['email'] . "</td>";
-					echo '<td>' . '<a class="button tiny" href="#">Editar</a> <a class="button tiny" class="button alert" href="#">Excluir</a>' . '</td>';
-					echo "</tr>";
+					if($row['idcliente'] != 1){
+						echo "<tr>";
+						echo "<td>" . $row['first_name'] . "</td>";
+						echo "<td>" . $row['last_name'] . "</td>";
+						echo "<td>" . $row['cpf'] . "</td>";
+						echo "<td>" . $row['telefone'] . "</td>";
+						echo "<td>" . $row['email'] . "</td>";
+						echo 
+						'
+							<td> 
+								<form method="post" action="">
+									<input type="hidden" name="id" value="<?php $i ?>"/>
+									<button type="submit" class="button tiny">Editar</button>
+
+								</form>
+							</td>
+
+							<td>
+								<form method="post" action="exclui.php">
+
+									<input type="hidden" name="id" value="';
+
+									echo $row['idcliente'];
+									
+									echo '" />
+									<button type="submit" class="button tiny" href="clientes.php">Excluir</button>
+
+								</form>
+
+							</td>
+						';
+						echo "</tr>";
+					}
 				}
 			?>
 
