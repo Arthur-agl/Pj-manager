@@ -21,8 +21,6 @@
 <div class="top-bar">
   <div class="top-bar-left">
     <ul class="menu">
-
-   
       <li><a style="border-right: 1px solid #aaa9a9;" >Sistema de Gestão</a></li>
       <li><a href="./index.php"> <i class="fi-home"></i> Home </a></li>
       <li><a href="./clientes.php"> <i class="fi-torsos-all"></i> Clientes</a>

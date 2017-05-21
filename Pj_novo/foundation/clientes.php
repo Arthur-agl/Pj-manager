@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Project Manager 0.0.1</title>
     <link rel="stylesheet" href="./css/foundation.css">
-	<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel='stylesheet' type='text/css'>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<?php
@@ -39,59 +38,53 @@
 <br>
 
 <div class="container" align ="center">
-	<table class = "table">
+	<table class = "hover">
 		<thead>
 			<tr>
 				<th>Nome</th>
-				<th>Sobrenome</th>
 				<th>CPF</th>
 				<th>Telefone</th>
 				<th>E-mail</th>
+				<th>Empresa</th>
 				<th>Ação</th>
-				<th></th>
+				<th>Ação</th>
         	</tr>
 		</thead> 
 		<tbody>
 			<?php
 				
-				$result = mysqli_query($con,"SELECT * FROM cliente");
-
+				$result = mysqli_query($con,"SELECT idcliente, CONCAT_ws(' ',cliente.first_name, cliente.last_name) as nome, cliente.cpf, cliente.telefone, cliente.email, empresa.Nome FROM cliente LEFT JOIN empresa ON cliente.empresa_assoc = empresa.idempresa ");
 				while($row = mysqli_fetch_array($result))
 				{
 					if($row['idcliente'] != 1){
 						echo "<tr>";
-						echo "<td>" . $row['first_name'] . "</td>";
-						echo "<td>" . $row['last_name'] . "</td>";
+						echo "<td>" . $row['nome'] . "</td>";
 						echo "<td>" . $row['cpf'] . "</td>";
 						echo "<td>" . $row['telefone'] . "</td>";
 						echo "<td>" . $row['email'] . "</td>";
+						echo "<td>" . $row['Nome'] . "</td>";
 						echo 
 						'
 							<td> 
 								<form method="post" action="">
 									<input type="hidden" name="id" value="<?php $i ?>"/>
 									<button type="submit" class="button tiny">Editar</button>
-
 								</form>
 							</td>
-
 							<td>
 								<form method="post" action="exclui.php">
-
 									<input type="hidden" name="id" value="';
-
 									echo $row['idcliente'];
 									
 									echo '" />
 									<button type="submit" class="button tiny" href="clientes.php">Excluir</button>
-
 								</form>
-
 							</td>
 						';
 						echo "</tr>";
 					}
 				}
+				
 			?>
 
 		</tbody>  
