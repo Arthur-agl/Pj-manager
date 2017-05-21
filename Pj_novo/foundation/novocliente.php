@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Project Manager 0.0.1</title>
     <link rel="stylesheet" href="./css/foundation.css">
-	<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel='stylesheet' type='text/css'>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <?php
@@ -36,7 +35,7 @@
 
     $id++;
 
-    $sql = "INSERT INTO cliente VALUES ( $id , '$vnome' , '$vsobrenome' , $vcpf , $vtelefone , '$vemail' , NULL)";
+    $sql = "INSERT INTO cliente VALUES ( $id , '$vnome' , '$vsobrenome' , '$vcpf' , '$vtelefone' , '$vemail' , NULL)";
 
     mysqli_query($con,$sql);
 
@@ -47,7 +46,6 @@
   <div class="top-bar-left">
     <ul class="menu">
       <li><a style="border-right: 1px solid #aaa9a9;" >Sistema de Gestão</a></li>
-      <li><a href="./index.php"> <i class="fi-home"></i> Home </a></li>
       <li class="active"><a href="./clientes.php"> <i class="fi-torsos-all"></i> Clientes</a>
       <li ><a href="./projetos.php"> <i class="fi-page-copy"></i> Projetos</a></li>
     </ul>
