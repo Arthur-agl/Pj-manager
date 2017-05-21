@@ -38,9 +38,9 @@
 <div class="row"><p class = alert><strong>Próximos projetos para entrega</strong></p></div>		
 		<div class="row">
 			<?php	
-				$result = mysqli_query($con,"SELECT projeto.data_entrega, projeto.description, CONCAT_ws(' ',cliente.first_name, cliente.last_name) as nome, projeto.valor FROM projeto INNER JOIN cliente ON projeto.cliente_assoc = cliente.idcliente ");
+				$result = mysqli_query($con,"SELECT projeto.data_entrega, projeto.description, CONCAT_ws(' ',cliente.first_name, cliente.last_name) as nome, projeto.valor FROM projeto INNER JOIN cliente ON projeto.cliente_assoc = cliente.idcliente ORDER BY data_entrega");
 
-				echo "<table id = 'datatable' class ='hover'>
+				echo "<table class ='hover'>
 				</thead>
 				<tr>
 				<th>Data para entrega</th>
