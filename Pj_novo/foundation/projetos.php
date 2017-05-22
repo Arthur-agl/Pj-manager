@@ -31,49 +31,50 @@
 
 
 
-<br>
-</header>
-<br>
 
-<div class="container" align ="center">
-	<div class="row">
+</header>
+
+<h3 align = "center"> Seus projetos</h3>
+<a class='button expanded success' href='#'><i class = 'fi-plus'></i>    Adicionar novo projeto</a>
+
+<div class="panel callout radius primary" align ="center">
+	<div class="row expanded">
 		<?php	
         $result = mysqli_query($con,"SELECT projeto.description, CONCAT_WS(\" \",cliente.first_name,cliente.last_name) AS `nome`, projeto.data_assinatura, projeto.valor, projeto.data_entrega FROM `projeto` INNER JOIN `cliente` ON cliente.idcliente = projeto.cliente_assoc ORDER BY data_entrega");
 
-		echo "<table class ='hover'>
-		</thead>
-		<tr>
+		echo "<table class ='hover stack' width = '100%'>
+		<thead>
+		<tr align = 'center'>
 		<th>Descrição</th>
 		<th>Cliente</th>
 		<th>Assinado em</th>
 		<th>Valor</th>
 		<th>Entrega prevista</th>
+		<th> </th>
+		<th>Ação</th>
+		<th> </th>
 		</tr>
 		</thead>
 		<tbody>";
 
 		while($row = mysqli_fetch_array($result))
 		{
-		echo "<tr>";
+		echo "<tr align = 'center'>";
 		echo "<td>" . $row['description'] . "</td>";
 		echo "<td>" . $row['nome'] . "</td>";
 		echo "<td>" . $row['data_assinatura'] . "</td>";
 		echo "<td>" . $row['valor'] . "</td>";
 		echo "<td>" . $row['data_entrega'] . "</td>";
+		echo '<td><button type="submit" class="button">  Ver  </button></td>';
+		echo '<td><button type="submit" class="button success">  Editar  </button></td>';
+		echo '<td><button type="submit" class="button alert">  Excluir  </button></td>';
 		echo "</tr>";
 		}
 		echo "</tbody>
 		</table>"; ?>
 	</div>
 </div>
-
-<footer>
-<div class="row expanded callout secondary">
-</div>
-
-</footer>
-
-
+<a class='button expanded success' href='#'><i class = 'fi-plus'></i>    Adicionar novo projeto</a>
 
 <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
 <script>

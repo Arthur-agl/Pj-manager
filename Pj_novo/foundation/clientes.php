@@ -31,14 +31,13 @@
   </div>
 </div>
 
-
-
-<br>
 </header>
-<br>
 
-<div class="container" align ="center">
-	<table class = "hover">
+<h3 align = "center"> Seus clientes</h3>
+<a class='button expanded success' href='./novocliente.html'><i class = 'fi-plus'></i>    Adicionar novo cliente</a>
+
+<div class="panel callout radius primary">
+	<div class="row expanded"><table class = "hover stack" width = 100%>
 		<thead>
 			<tr>
 				<th>Nome</th>
@@ -46,18 +45,19 @@
 				<th>Telefone</th>
 				<th>E-mail</th>
 				<th>Empresa</th>
+				<th></th>
 				<th>Ação</th>
-				<th>Ação</th>
+				<th></th>
         	</tr>
 		</thead> 
 		<tbody>
 			<?php
 				
-				$result = mysqli_query($con,"SELECT idcliente, CONCAT_ws(' ',cliente.first_name, cliente.last_name) as nome, cliente.cpf, cliente.telefone, cliente.email, empresa.Nome FROM cliente LEFT JOIN empresa ON cliente.empresa_assoc = empresa.idempresa ");
+				$result = mysqli_query($con,"SELECT idcliente, CONCAT_ws(' ',cliente.first_name, cliente.last_name) as nome, cliente.cpf, cliente.telefone, cliente.email, empresa.Nome FROM cliente LEFT JOIN empresa ON cliente.empresa_assoc = empresa.idempresa ORDER BY nome");
 				while($row = mysqli_fetch_array($result))
 				{
 					if($row['idcliente'] != 1){
-						echo "<tr>";
+						echo "<tr align = 'center'>";
 						echo "<td>" . $row['nome'] . "</td>";
 						echo "<td>" . $row['cpf'] . "</td>";
 						echo "<td>" . $row['telefone'] . "</td>";
@@ -66,9 +66,18 @@
 						echo 
 						'
 							<td> 
+								<form method="get" action="vercliente.php">
+									<input type="hidden" name="id" value="' . $row['idcliente'] .'"/>
+									<button type="submit" class="button">  Ver  </button>
+								</form>
+							</td>
+							<td> 
 								<form method="post" action="">
-									<input type="hidden" name="id" value="<?php $i ?>"/>
-									<button type="submit" class="button tiny">Editar</button>
+									<input type="hidden" name="id" value="';
+									echo $row['idcliente'];
+									
+									echo '"/>
+									<button type="submit" class="button success">Editar</button>
 								</form>
 							</td>
 							<td>
@@ -77,7 +86,7 @@
 									echo $row['idcliente'];
 									
 									echo '" />
-									<button type="submit" class="button tiny" href="clientes.php">Excluir</button>
+									<button type="submit" class="button alert" href="clientes.php">Excluir</button>
 								</form>
 							</td>
 						';
@@ -87,32 +96,14 @@
 				
 			?>
 
-		</tbody>  
+		</tbody>
+
 	</table>
-	<a class="button success" href="./novocliente.html"><i class = "fi-plus "></i>    Adicionar novo cliente</a>
+	
+	</div>
 </div>
+	<a class='button expanded success' href='./novocliente.html'><i class = 'fi-plus'></i>    Adicionar novo cliente</a>
 
-<footer>
-<div class="row expanded callout secondary">
-<div class="large-4 columns">
-
-
-</div>
-
-
-</div>
-<div class="row expanded">
-<div class="medium-6 columns">
-<ul class="menu">
-</ul>
-</div>
-<div class="medium-6 columns">
-<ul class="menu align-right">
-<!--<li class="menu-text"> Copyright © 2099 Random Mag </li> -->
-</ul>
-</div>
-</div>
-</footer>
 
 
 

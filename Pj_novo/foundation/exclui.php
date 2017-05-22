@@ -47,7 +47,7 @@ mysqli_query($con,"DELETE FROM cliente WHERE cliente.idcliente = $var");
 </header>
 <br>
 
-<div class="container" align ="center">
+<div class="panel callout radius primary" align ="center">
 	<div class="row">
 
         <h2> Cliente excluído com sucesso! </h2>
