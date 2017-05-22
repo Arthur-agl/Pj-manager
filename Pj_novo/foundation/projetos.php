@@ -65,9 +65,9 @@
 		echo "<td>" . $row['data_assinatura'] . "</td>";
 		echo "<td>" . $row['valor'] . "</td>";
 		echo "<td>" . $row['data_entrega'] . "</td>";
-		echo '<td><button type="submit" class="button">  Ver  </button></td>';
-		echo '<td><button type="submit" class="button success">  Editar  </button></td>';
-		echo '<td><button type="submit" class="button alert">  Excluir  </button></td>';
+		echo '<td><button type="submit" class="button expanded">  Ver  </button></td>';
+		echo '<td><button type="submit" class="button success expanded">  Editar  </button></td>';
+		echo '<td><button type="submit" class="button alert expanded">  Excluir  </button></td>';
 		echo "</tr>";
 		}
 		echo "</tbody>

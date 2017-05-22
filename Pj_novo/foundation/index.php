@@ -35,10 +35,10 @@
 		
 		<div class="row expanded">
 			<?php	
-				$result = mysqli_query($con,"SELECT projeto.data_entrega, projeto.description, CONCAT_ws(' ',cliente.first_name, cliente.last_name) as nome, projeto.valor FROM projeto INNER JOIN cliente ON projeto.cliente_assoc = cliente.idcliente ORDER BY data_entrega");
+				$result = mysqli_query($con,"SELECT idcliente, projeto.data_entrega, projeto.description, CONCAT_ws(' ',cliente.first_name, cliente.last_name) as nome, projeto.valor FROM projeto INNER JOIN cliente ON projeto.cliente_assoc = cliente.idcliente ORDER BY data_entrega");
 
 				echo "<table class ='hover stack ' width='100%'>
-				</thead>
+				<thead>
 				<tr>
 				<th>Data para entrega</th>
 				<th>Projeto</th>
@@ -56,7 +56,10 @@
 					echo "<td>" . $row['description'] . "</td>";
 					echo "<td>" . $row['nome'] . "</td>";
 					echo "<td>" . $row['valor'] . "</td>";
-					echo "<td align><button type='submit' class='button'>  Ver  </button></td>";
+					echo '<td><form method="get" action="vercliente.php">
+									<input type="hidden" name="id" value=' . $row['idcliente'] .'>
+									<button type="submit" class="button expanded">  Ver  </button>
+								</form></td>';
 					echo "</tr>";
 				}
 				echo "</tbody>
