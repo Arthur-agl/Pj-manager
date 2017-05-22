@@ -108,7 +108,7 @@
                 <div class = "row">
                     <div class = "medium-6 columns">
                         <label>Data de assinatura
-                        <input type="datetime" name="f_data_ass"/>
+                        <input type="date" name="f_data_ass"/>
                     </div>
                     <div class = "medium-6 columns">
                         <label>Data para entrega

@@ -87,13 +87,18 @@
         $result = mysqli_query($con,"SELECT * FROM projeto");
 	
         while($row = mysqli_fetch_array($result)){
-            $id_assoc = $row['cliente_assoc'];
+            $id_proj = $row['idprojeto'];
         }
 
-        $id_assoc++;
+        if(!empty($id_proj)){
+            $id_proj++;
+        }
+        else{
+            $id_proj = 1;
+        }
 
         if(!empty($data_ass) && !empty($data_ent) && !empty($descricao) && !empty($valor)){
-            mysqli_query($con,"INSERT INTO projeto VALUES ($id_assoc, $id, '$data_ass', $valor, '$descricao', '$data_ent')");
+            mysqli_query($con,"INSERT INTO projeto VALUES ($id_proj, $id, '$data_ass', $valor, '$descricao', '$data_ent')");
             echo '<br> <h2> Projeto inserido com sucesso! </h2>';
         }
         else{
