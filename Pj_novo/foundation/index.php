@@ -28,37 +28,35 @@
   </div>
 </div>
 
-
-
-<br>
 </header>
-<br>
 
-	<div class="container" align ="center">
-<div class="row"><p class = alert><strong>Próximos projetos para entrega</strong></p></div>		
-		<div class="row">
+<div class="row"><h3 class = "alert" align = "center"><strong>Próximos projetos para entrega</strong></h3></div>
+	<div class="panel callout radius primary">
+		
+		<div class="row expanded">
 			<?php	
 				$result = mysqli_query($con,"SELECT projeto.data_entrega, projeto.description, CONCAT_ws(' ',cliente.first_name, cliente.last_name) as nome, projeto.valor FROM projeto INNER JOIN cliente ON projeto.cliente_assoc = cliente.idcliente ORDER BY data_entrega");
 
-				echo "<table class ='hover'>
+				echo "<table class ='hover stack ' width='100%'>
 				</thead>
 				<tr>
 				<th>Data para entrega</th>
 				<th>Projeto</th>
 				<th>Cliente</th>
 				<th>Valor</th>
+				<th>Ação</th>
 				</tr>
 				</thead>
 				<tbody>";
 
 				while($row = mysqli_fetch_array($result))
 				{
-					echo "<tr>";
+					echo "<tr align = 'center'>";
 					echo "<td>" . $row['data_entrega'] . "</td>";
 					echo "<td>" . $row['description'] . "</td>";
 					echo "<td>" . $row['nome'] . "</td>";
 					echo "<td>" . $row['valor'] . "</td>";
-					echo "<td><a href = '#'> <i class='fi-eye'></i></a> </td>";
+					echo "<td align><button type='submit' class='button'>  Ver  </button></td>";
 					echo "</tr>";
 				}
 				echo "</tbody>
@@ -66,14 +64,12 @@
 		</div>
 	</div>
 	
-	<footer>
-		<div class="row expanded callout secondary"></div>
-		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	
+			<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
 		<script>
 			$(document).foundation();
 		</script>
 		<script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
-	</footer>
 </body>
 </html>

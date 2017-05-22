@@ -58,8 +58,8 @@
 </header>
 <br>
 
-<div class="container" align ="center">
-	<div class="row">
+<div class="panel callout radius primary" >
+	<div class="row expanded" align = "center">
         <h2> Cliente adicionado com sucesso! </h2>
         <a class="button success" href="./clientes.php"><i class = "fi-arrow-left "></i> Voltar à página de clientes</a>
 
