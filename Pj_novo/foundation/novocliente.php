@@ -54,9 +54,9 @@
 
 
 
-<br>
+
 </header>
-<br>
+
 
 <div class="panel callout radius primary" >
 	<div class="row expanded" align = "center">

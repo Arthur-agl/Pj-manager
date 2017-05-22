@@ -31,27 +31,37 @@
   </div>
 </div>
 
-
-
-<br>
 </header>
-<br>
+<div class = "row" align = "center">
+	<h3>Dados do cliente</h3>
+</div>
 
-<div class="container" align = "left">
+<div class="panel expanded callout primary">
 	
 			<?php
 				$val = $_GET["id"];
-				$result = mysqli_query($con,"SELECT idcliente, CONCAT_ws(' ',cliente.first_name, cliente.last_name) as nome, cliente.cpf, cliente.telefone, cliente.email, empresa.Nome FROM cliente LEFT JOIN empresa ON cliente.empresa_assoc = empresa.idempresa WHERE cliente.idcliente = " . $val );
+				$result = mysqli_query($con,"SELECT cliente.idcliente, CONCAT_ws(' ',cliente.first_name, cliente.last_name) as nome, cliente.cpf, cliente.telefone, cliente.email, empresa.Nome FROM cliente LEFT JOIN empresa ON cliente.empresa_assoc = empresa.idempresa WHERE cliente.idcliente = " . $val );
 				while($row = mysqli_fetch_array($result))
 				{
 						
-						
-						echo "<h1>" . $row['nome'] . " - dados</h1>";
+						echo "<div class ='row' align = left>";
+						echo "<h3>" . $row['nome'] . "</h3>";
 						echo "<p>Cpf: " . $row['cpf'] . "</p>";
 						echo "<p>Telefone: " . $row['telefone'] . "</p>";
 						echo "<p>E-mail: ". $row['email'] . "</p>";
 						echo "<p>Empresa: " . $row['Nome'] . "</p>";
-						
+						echo "<div class='row' align = 'left'>
+						<form method='post' action='edita.php'>
+							<input type='hidden' name='id' value=" .
+								$row['idcliente'] . ">
+							</div>		
+						<div class ='row expanded '>			
+							<div class = 'medium-1 columns'><button type='submit' class='button success'>Editar</button></div>
+							<div class = 'medium-1 columns'><a href ='./clientes.php' class = 'button'>Voltar</a></div>
+							<div class ='medium-10 colums'></div>
+						</div>
+						</form>";
+						echo "</div>";		
 					
 				}
 				echo "<h2>Projetos:</h2>";
@@ -80,13 +90,12 @@
 				}
 				echo "</tbody>
 					</table>";
-				echo "<div class='row' align = 'center'>
-						<a class ='button  success' href= '#'> Editar cliente</a>
-						<a class ='button' href= './clientes.php'>Voltar</a>
-					</div>"
+				
 			?>
-
 </div>
+
+			
+<a href ='./clientes.php' class = 'button expanded' width = 100%>Voltar</a>
 
 
 <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>

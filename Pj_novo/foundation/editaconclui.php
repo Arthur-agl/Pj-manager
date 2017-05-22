@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Project Manager 0.0.1</title>
     <link rel="stylesheet" href="./css/foundation.css">
-	<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel='stylesheet' type='text/css'>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <?php
@@ -32,11 +31,7 @@
   </div>
 </div>
 
-
-
-<br>
 </header>
-<br>
 
 <?php
 
@@ -82,14 +77,8 @@
     }
 
 ?>
-    
-
-    
-    
-
-
-
-<div class="container" align ="center">
+ 
+<div class="panel callout radius primary" align ="center">
 	<div class="row">
         
         <h2> Cliente editado com sucesso! </h2>
