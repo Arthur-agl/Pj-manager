@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Project Manager 0.0.1</title>
     <link rel="stylesheet" href="./css/foundation.css">
+	<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel='stylesheet' type='text/css'>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<?php
@@ -31,21 +32,21 @@
   </div>
 </div>
 
+
+
+<br>
 </header>
-
-<h3 align = "center"> Seus clientes</h3>
-<a class='button expanded success' href='./novocliente.html'><i class = 'fi-plus'></i>    Adicionar novo cliente</a>
-
-<div class="panel callout radius primary">
-	<div class="row expanded"><table class = "hover stack" width = 100%>
+<br>
+		
+<div class="container" align ="center">
+	<table class = "table">
 		<thead>
 			<tr>
 				<th>Nome</th>
+				<th>Sobrenome</th>
 				<th>CPF</th>
 				<th>Telefone</th>
 				<th>E-mail</th>
-				<th>Empresa</th>
-				<th></th>
 				<th>Ação</th>
 				<th></th>
         	</tr>
@@ -53,57 +54,77 @@
 		<tbody>
 			<?php
 				
-				$result = mysqli_query($con,"SELECT idcliente, CONCAT_ws(' ',cliente.first_name, cliente.last_name) as nome, cliente.cpf, cliente.telefone, cliente.email, empresa.Nome FROM cliente LEFT JOIN empresa ON cliente.empresa_assoc = empresa.idempresa ORDER BY nome");
+				$result = mysqli_query($con,"SELECT * FROM cliente");
+
 				while($row = mysqli_fetch_array($result))
 				{
-					if($row['idcliente'] != 1){
-						echo "<tr align = 'center'>";
-						echo "<td>" . $row['nome'] . "</td>";
-						echo "<td>" . $row['cpf'] . "</td>";
-						echo "<td>" . $row['telefone'] . "</td>";
-						echo "<td>" . $row['email'] . "</td>";
-						echo "<td>" . $row['Nome'] . "</td>";
-						echo 
-						'
-							<td> 
-								<form method="get" action="vercliente.php">
-									<input type="hidden" name="id" value="' . $row['idcliente'] .'"/>
-									<button type="submit" class="button">  Ver  </button>
-								</form>
-							</td>
-							<td> 
-								<form method="post" action="">
-									<input type="hidden" name="id" value="';
-									echo $row['idcliente'];
+					
+					echo "<tr>";
+					echo "<td>" . $row['first_name'] . "</td>";
+					echo "<td>" . $row['last_name'] . "</td>";
+					echo "<td>" . $row['cpf'] . "</td>";
+					echo "<td>" . $row['telefone'] . "</td>";
+					echo "<td>" . $row['email'] . "</td>";
+					echo 
+					'
+						<td> 
+							<form method="post" action="edita.php">
+
+								<input type="hidden" name="id" value="';
+
+								echo $row['idcliente'];
 									
-									echo '"/>
-									<button type="submit" class="button success">Editar</button>
-								</form>
-							</td>
-							<td>
-								<form method="post" action="exclui.php">
-									<input type="hidden" name="id" value="';
-									echo $row['idcliente'];
+								echo '" />
+								<button type="submit" class="button tiny" href="clientes.php">Editar</button>
+
+							</form>
+						</td>
+
+						<td>
+							<form method="post" action="exclui.php">
+
+								<input type="hidden" name="id" value="';
+
+								echo $row['idcliente'];
 									
-									echo '" />
-									<button type="submit" class="button alert" href="clientes.php">Excluir</button>
-								</form>
-							</td>
-						';
-						echo "</tr>";
-					}
+								echo '" />
+								<button type="submit" class="button tiny" href="clientes.php">Excluir</button>
+
+							</form>
+
+						</td>
+					';
+					echo "</tr>";
+					
 				}
-				
 			?>
 
-		</tbody>
-
+		</tbody>  
 	</table>
-	
-	</div>
+	<a class="button success" href="./novocliente.html"><i class = "fi-plus "></i>    Adicionar novo cliente</a>
 </div>
-	<a class='button expanded success' href='./novocliente.html'><i class = 'fi-plus'></i>    Adicionar novo cliente</a>
 
+<footer>
+<div class="row expanded callout secondary">
+<div class="large-4 columns">
+
+
+</div>
+
+
+</div>
+<div class="row expanded">
+<div class="medium-6 columns">
+<ul class="menu">
+</ul>
+</div>
+<div class="medium-6 columns">
+<ul class="menu align-right">
+<!--<li class="menu-text"> Copyright © 2099 Random Mag </li> -->
+</ul>
+</div>
+</div>
+</footer>
 
 
 
