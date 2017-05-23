@@ -34,8 +34,8 @@
     <ul class="menu">
       <li><a style="border-right: 1px solid #aaa9a9;" >Sistema de Gestão</a></li>
       <li><a href="./index.php"> <i class="fi-home"></i> Home </a></li>
-      <li class="active"><a href="./clientes.php"> <i class="fi-torsos-all"></i> Clientes</a>
-      <li ><a href="./projetos.php"> <i class="fi-page-copy"></i> Projetos</a></li>
+      <li><a href="./clientes.php"> <i class="fi-torsos-all"></i> Clientes</a>
+      <li class="active"><a href="./projetos.php"> <i class="fi-page-copy"></i> Projetos</a></li>
     </ul>
   </div>
 </div>
@@ -96,7 +96,7 @@
         </form>
 	</div>
 </div>
-<a class="button expanded" href = "./clientes.php">Voltar</a>
+<a class="button expanded" href = "./projetos.php">Voltar</a>
 
 <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
 <script>

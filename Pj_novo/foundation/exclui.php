@@ -2,7 +2,7 @@
 include './connect.php';
 
 $var = $_POST["id"];
-
+mysqli_query($con,"DELETE FROM projeto WHERE projeto.cliente_assoc = $var");
 mysqli_query($con,"DELETE FROM cliente WHERE cliente.idcliente = $var");
 
 ?>

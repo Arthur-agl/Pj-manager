@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Project Manager 0.0.1</title>
     <link rel="stylesheet" href="./css/foundation.css">
+
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel='stylesheet' type='text/css'>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
 	<?php
 		include './connect.php';
 	?>
@@ -15,10 +17,7 @@
 
 
 
-<style>.fi-social-facebook{color:dodgerblue;font-size:2rem;}.fi-social-youtube{color:red;font-size:2rem;}.fi-social-pinterest{color:darkred;font-size:2rem;}i.fi-social-instagram{color:brown;font-size:2rem;}i.fi-social-tumblr{color:navy;font-size:2rem;}.fi-social-twitter{color:skyblue;font-size:2rem;}</style>
 <header>
-
-
 
 <div class="top-bar">
   <div class="top-bar-left">
@@ -56,15 +55,18 @@
 								$row['idcliente'] . ">
 							</div>		
 						<div class ='row expanded '>			
-							<div class = 'medium-1 columns'><button type='submit' class='button success'>Editar</button></div>
-							<div class = 'medium-1 columns'><a href ='./clientes.php' class = 'button'>Voltar</a></div>
+							<div class = 'medium-1 columns'><button type='submit' class='button success'>Editar cliente</button></div>
+							<div class = 'medium-1 columns'><form method='post' action='exclui.php'>
+								<input type='hidden' name='id' value='" . $row['idcliente'] ."'/>
+								<button type='submit' class='button alert expanded'>  Excluir  cliente</button>
+							</form></a></div>
 							<div class ='medium-10 colums'></div>
 						</div>
 						</form>";
 						echo "</div>";		
 					
 				}
-				echo "<h2>Projetos:</h2>";
+				echo "<hr><h2>Projetos:</h2>";
 				
 				echo "<table class ='hover'>
 					<thead>
@@ -77,14 +79,14 @@
 					</thead>
 					<tbody>";
 				
-				$result = mysqli_query($con,"SELECT projeto.description, projeto.data_assinatura, projeto.valor, projeto.data_entrega FROM cliente LEFT JOIN projeto ON projeto.cliente_assoc = cliente.idcliente WHERE cliente.idcliente = " . $val );
+				$result = mysqli_query($con,"SELECT projeto.idprojeto, projeto.description, projeto.data_assinatura, projeto.valor, projeto.data_entrega FROM cliente LEFT JOIN projeto ON projeto.cliente_assoc = cliente.idcliente WHERE cliente.idcliente = " . $val );
 				while($row = mysqli_fetch_array($result))
 				{
 					
 						echo "<tr>";
-						echo "<td>" . $row['description'] . "</td>";
+						echo "<td><a href = './verprojeto.php?id=" . $row['idprojeto']. "'> " . $row['description'] . "</a></td>";
 						echo "<td>" . $row['data_assinatura'] . "</td>";
-						echo "<td>" . $row['valor'] . "</td>";
+						echo "<td>R$" . $row['valor'] . "</td>";
 						echo "<td>" . $row['data_entrega'] . "</td>";
 						echo "</tr>";
 				}

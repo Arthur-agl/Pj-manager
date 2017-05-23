@@ -6,10 +6,11 @@
     <title>Project Manager 0.0.1</title>
     <link rel="stylesheet" href="./css/foundation.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.10.15/datatables.min.css"/>
+ 
+	<script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.15/datatables.min.js"></script>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<?php
-		include './connect.php';
-	?>
+	<?php include './connect.php';?>
 	</head>
 <body>
 
@@ -104,13 +105,11 @@
 </div>
 	<a class='button expanded success' href='./novocliente.html'><i class = 'fi-plus'></i>    Adicionar novo cliente</a>
 
-
-
-
-<script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+<script src="./js/vendor/foundation.js"></script>
+<script src="./js/vendor/jquery.js"></script>
 <script>
-      $(document).foundation();
-    </script>
+	  $(document).foundation();
+</script>
 <script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
 </body>
 </html>

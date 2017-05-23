@@ -25,12 +25,15 @@
     $vcpf = $_POST["f_cpf"];
     $vtelefone = $_POST["f_tel"];
     $vemail = $_POST["f_email"];
+	$vempresa = $_POST["f_empresa"];
+	$vcnpj = $_POST["f_cnpj"];
+	$vendereco = $_POST["f_endereco"];
 
-    $result = mysqli_query($con,"SELECT * FROM cliente");
+    $result = mysqli_query($con,"SELECT * FROM empresa");
     
     while($row = mysqli_fetch_array($result))
 	{
-        $id = $row['idcliente'];
+        $id = $row['idempresa'];
 	}
 
     if(!empty($id)){
@@ -39,10 +42,21 @@
     else{
       $id = 1;
     }
-
-    $sql = "INSERT INTO cliente VALUES ( $id , '$vnome' , '$vsobrenome' , '$vcpf' , '$vtelefone' , '$vemail' , NULL)";
+	
+	if(!empty($vempresa) && !empty($vcnpj) && !empty($vendereco) ) {
+	$sql = "INSERT INTO empresa VALUES ( $id, '$vempresa','$vcnpj','$vendereco')";
+	mysqli_query($con,$sql);
+	$sql = "INSERT INTO cliente VALUES ( 0 , '$vnome' , '$vsobrenome' , '$vcpf' , '$vtelefone' , '$vemail' , $id)";
+	mysqli_query($con,$sql);
+	}
+	else{
+		$sql = "INSERT INTO cliente VALUES ( 0 , '$vnome' , '$vsobrenome' , '$vcpf' , '$vtelefone' , '$vemail' , NULL)";
+		mysqli_query($con,$sql);
+	}
+    
 
     mysqli_query($con,$sql);
+	
 
 
 ?>
