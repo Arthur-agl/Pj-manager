@@ -71,7 +71,7 @@
 			echo "<td>" . $row['data_entrega'] . "</td>";
 			echo '
 				<td> 
-					<form method="post" action="verprojeto.php">
+					<form method="get" action="verprojeto.php">
 						<input type="hidden" name="id" value="' . $row['idprojeto'] .'"/>
 						<button type="submit" class="button expanded">  Ver  </button>
 					</form>

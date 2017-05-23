@@ -18,9 +18,10 @@
     $(document).ready(function () { 
         var $CampoCpf = $("#input_cpf");
 		var $CampoTelefone = $("#input_telefone");
-		
+		var $CampoCnpj = $("#input_cnpj")
 		$CampoCpf.mask('000.000.000-00');
 		$CampoTelefone.mask('(00)Z0000-0000', {translation:  {'Z': {pattern: /[0-9]/, optional: true}}});
+		$CampoCnpj.mask('00.000.000/0000-00');
     });
 </script>
 
@@ -80,7 +81,25 @@
                         <input type="email" name="f_email"/>
                     </div>
                 </div>
+				<hr>
+				<div class = "row expanded"align = "center">
+                    <div class = "medium-6 columns">
+                        <label>Empresa
+                        <input type="text" name="f_empresa"/>
+                    </div>
+					<div class = "medium-6 columns">
+                        <label>CNPJ
+                        <input id = "input_cnpj" type="text" name="f_cnpj" />
+                    </div>
+                </div>
 
+				<div class = "row expanded"align = "center">
+                    <div class = "medium-12 columns">
+                        <label>Endereço
+                        <input type="text" name="f_endereco"/>
+                    </div>
+                </div>
+				
                 <div class = "row expanded" align = "center">
                     <div class = "medium-6 columns">
                         <input type="reset" value="Limpar" class = "button warning expanded"/>

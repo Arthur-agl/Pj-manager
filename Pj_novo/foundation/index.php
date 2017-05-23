@@ -35,7 +35,7 @@
 		
 		<div class="row expanded">
 			<?php	
-				$result = mysqli_query($con,"SELECT idcliente, projeto.data_entrega, projeto.description, CONCAT_ws(' ',cliente.first_name, cliente.last_name) as nome, projeto.valor FROM projeto INNER JOIN cliente ON projeto.cliente_assoc = cliente.idcliente ORDER BY data_entrega");
+				$result = mysqli_query($con,"SELECT idprojeto, projeto.data_entrega, projeto.description, CONCAT_ws(' ',cliente.first_name, cliente.last_name) as nome, projeto.valor FROM projeto INNER JOIN cliente ON projeto.cliente_assoc = cliente.idcliente ORDER BY data_entrega ASC");
 
 				echo "<table class ='hover stack ' width='100%'>
 				<thead>
@@ -55,10 +55,10 @@
 					echo "<td>" . $row['data_entrega'] . "</td>";
 					echo "<td>" . $row['description'] . "</td>";
 					echo "<td>" . $row['nome'] . "</td>";
-					echo "<td>" . $row['valor'] . "</td>";
-					echo '<td><form method="get" action="vercliente.php">
-									<input type="hidden" name="id" value=' . $row['idcliente'] .'>
-									<button type="submit" class="button expanded">  Ver  </button>
+					echo "<td>R$" . $row['valor'] . "</td>";
+					echo '<td><form method="get" action="verprojeto.php">
+									<input type="hidden" name="id" value=' . $row['idprojeto'] .'>
+									<button type="submit" class="button expanded">  Detalhes  </button>
 								</form></td>';
 					echo "</tr>";
 				}
