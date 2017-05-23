@@ -36,43 +36,32 @@
 <?php
 
     $id = $_POST["id"];
-    
-    $nome = $_POST["f_nome"];
-    $sobrenome = $_POST["f_sobrenome"];
-    $cpf = $_POST["f_cpf"];
-    $telefone = $_POST["f_tel"];
-    $email = $_POST["f_email"];
 
     $data_ass = $_POST["f_data_ass"];
     $data_ent = $_POST["f_data_ent"];
     $descricao = $_POST["f_descricao"];
     $valor = $_POST["f_valor"];
 
-    $result = mysqli_query($con,"SELECT * FROM cliente WHERE cliente.idcliente = $id");
+    $result = mysqli_query($con,"SELECT * FROM projeto WHERE projeto.idprojeto = $id");
     $row = mysqli_fetch_array($result);
 
-    if($nome != $row['first_name']){
-        $sql = "UPDATE cliente SET first_name = '$nome' WHERE cliente.idcliente = $id";
+    if($data_ass != $row['data_assinatura']){
+        $sql = "UPDATE projeto SET data_assinatura = '$data_ass' WHERE projeto.idprojeto = $id";
         mysqli_query($con,$sql);
     }
 
-    if($sobrenome != $row['last_name']){
-        $sql = "UPDATE cliente SET last_name = '$sobrenome' WHERE cliente.idcliente = $id";
+    if($data_ent != $row['data_entrega']){
+        $sql = "UPDATE projeto SET data_entrega = '$data_ent' WHERE projeto.idprojeto = $id";
         mysqli_query($con,$sql);
     }
     
-    if($cpf != $row['cpf']){
-        $sql = "UPDATE cliente SET cpf = '$cpf' WHERE cliente.idcliente = $id";
+    if($descricao != $row['description']){
+        $sql = "UPDATE projeto SET description = '$descricao' WHERE projeto.idprojeto = $id";
         mysqli_query($con,$sql);
     }
 
-    if($telefone != $row['telefone']){
-        $sql = "UPDATE cliente SET telefone = '$telefone' WHERE cliente.idcliente = $id";
-        mysqli_query($con,$sql);
-    }
-
-    if($email != $row['email']){
-        $sql = "UPDATE cliente SET email = '$email' WHERE cliente.idcliente = $id";
+    if($valor != $row['valor']){
+        $sql = "UPDATE projeto SET valor = $valor WHERE projeto.idprojeto = $id";
         mysqli_query($con,$sql);
     }
 
@@ -81,32 +70,8 @@
 <div class="panel callout radius primary" align ="center">
 	<div class="row">
         
-        <h2> Cliente editado com sucesso! </h2>
-        <?php 
-        
-        $result = mysqli_query($con,"SELECT * FROM projeto");
-	
-        while($row = mysqli_fetch_array($result)){
-            $id_proj = $row['idprojeto'];
-        }
-
-        if(!empty($id_proj)){
-            $id_proj++;
-        }
-        else{
-            $id_proj = 1;
-        }
-
-        if(!empty($data_ass) && !empty($data_ent) && !empty($descricao) && !empty($valor)){
-            mysqli_query($con,"INSERT INTO projeto VALUES ($id_proj, $id, '$data_ass', $valor, '$descricao', '$data_ent')");
-            echo '<br> <h2> Projeto inserido com sucesso! </h2>';
-        }
-        else{
-            echo '<br> <h2> Nenhum projeto inserido! </h2>';
-        }
-
-        ?>
-        <a class="button success" href="./clientes.php"><i class = "fi-arrow-left "></i> Voltar à página de clientes</a>
+        <h2> Projeto editado com sucesso! </h2>
+        <a class="button success" href="./projetos.php"><i class = "fi-arrow-left "></i> Voltar à página de projetos</a>
 
 	</div>
 </div>

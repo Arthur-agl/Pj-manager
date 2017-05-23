@@ -40,38 +40,69 @@
 <div class="panel callout radius primary" align ="center">
 	<div class="row expanded">
 		<?php	
-        $result = mysqli_query($con,"SELECT projeto.description, CONCAT_WS(\" \",cliente.first_name,cliente.last_name) AS `nome`, projeto.data_assinatura, projeto.valor, projeto.data_entrega FROM `projeto` INNER JOIN `cliente` ON cliente.idcliente = projeto.cliente_assoc ORDER BY data_entrega");
+        $result = mysqli_query($con,"SELECT projeto.description, CONCAT_WS(\" \",cliente.first_name,cliente.last_name) AS `nome`, projeto.data_assinatura, projeto.valor, projeto.data_entrega, projeto.idprojeto FROM `projeto` INNER JOIN `cliente` ON cliente.idcliente = projeto.cliente_assoc ORDER BY data_entrega");
 
-		echo "<table class ='hover stack' width = '100%'>
-		<thead>
-		<tr align = 'center'>
-		<th>Descrição</th>
-		<th>Cliente</th>
-		<th>Assinado em</th>
-		<th>Valor</th>
-		<th>Entrega prevista</th>
-		<th> </th>
-		<th>Ação</th>
-		<th> </th>
-		</tr>
-		</thead>
-		<tbody>";
+		if(!empty($row = mysqli_fetch_array($result))){
 
-		while($row = mysqli_fetch_array($result))
-		{
-		echo "<tr align = 'center'>";
-		echo "<td>" . $row['description'] . "</td>";
-		echo "<td>" . $row['nome'] . "</td>";
-		echo "<td>" . $row['data_assinatura'] . "</td>";
-		echo "<td>" . $row['valor'] . "</td>";
-		echo "<td>" . $row['data_entrega'] . "</td>";
-		echo '<td><button type="submit" class="button expanded">  Ver  </button></td>';
-		echo '<td><button type="submit" class="button success expanded">  Editar  </button></td>';
-		echo '<td><button type="submit" class="button alert expanded">  Excluir  </button></td>';
-		echo "</tr>";
+			echo "<table class ='hover stack' width = '100%'>
+			<thead>
+			<tr align = 'center'>
+			<th>Descrição</th>
+			<th>Cliente</th>
+			<th>Assinado em</th>
+			<th>Valor</th>
+			<th>Entrega prevista</th>
+			<th> </th>
+			<th>Ação</th>
+			<th> </th>
+			</tr>
+			</thead>
+			<tbody>";
+
+			$result = mysqli_query($con,"SELECT projeto.description, CONCAT_WS(\" \",cliente.first_name,cliente.last_name) AS `nome`, projeto.data_assinatura, projeto.valor, projeto.data_entrega, projeto.idprojeto FROM `projeto` INNER JOIN `cliente` ON cliente.idcliente = projeto.cliente_assoc ORDER BY data_entrega");
+
+			while($row = mysqli_fetch_array($result))
+			{
+			echo "<tr align = 'center'>";
+			echo "<td>" . $row['description'] . "</td>";
+			echo "<td>" . $row['nome'] . "</td>";
+			echo "<td>" . $row['data_assinatura'] . "</td>";
+			echo "<td>" . $row['valor'] . "</td>";
+			echo "<td>" . $row['data_entrega'] . "</td>";
+			echo '
+				<td> 
+					<form method="post" action="verprojeto.php">
+						<input type="hidden" name="id" value="' . $row['idprojeto'] .'"/>
+						<button type="submit" class="button expanded">  Ver  </button>
+					</form>
+				</td>
+				<td> 
+					<form method="post" action="editaprojeto.php">
+						<input type="hidden" name="id" value="' . $row['idprojeto'] .'"/>
+						<button type="submit" class="button success expanded">  Editar  </button>
+					</form>
+				</td>
+				<td> 
+					<form method="post" action="excluiprojeto.php">
+						<input type="hidden" name="id" value="' . $row['idprojeto'] .'"/>
+						<button type="submit" class="button alert expanded">  Excluir  </button>
+					</form>
+				</td>
+			
+			';
+			echo "</tr>";
+			}
+			echo "</tbody>
+			</table>";
 		}
-		echo "</tbody>
-		</table>"; ?>
+		else{
+
+			echo '<h2> Você não possui projetos cadastrados. </h2>';
+
+		}
+
+
+		?>
 	</div>
 </div>
 <a class='button expanded success' href='#'><i class = 'fi-plus'></i>    Adicionar novo projeto</a>
