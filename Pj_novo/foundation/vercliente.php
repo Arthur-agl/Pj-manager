@@ -3,15 +3,12 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Project Manager 0.0.1</title>
+    <title>Project Manager 1.0.1</title>
     <link rel="stylesheet" href="./css/foundation.css">
 
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel='stylesheet' type='text/css'>
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-	<?php
-		include './connect.php';
-	?>
+	<?php include './connect.php'; ?>
 	</head>
 <body>
 
@@ -68,7 +65,7 @@
 				}
 				echo "<hr><h2>Projetos:</h2>";
 				
-				echo "<table class ='hover'>
+				echo "<table class ='hover stack'>
 					<thead>
 					<tr>
 						<th>Descrição</th>
@@ -99,7 +96,7 @@
 			
 <a href ='./clientes.php' class = 'button expanded' width = 100%>Voltar</a>
 
-
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
 <script>
       $(document).foundation();

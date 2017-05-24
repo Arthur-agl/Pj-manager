@@ -3,19 +3,13 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Project Manager 0.0.1</title>
+    <title>Project Manager 1.0.1</title>
     <link rel="stylesheet" href="./css/foundation.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel='stylesheet' type='text/css'>
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <?php
-	    include './connect.php';
-	?>
+    <?php include './connect.php'; ?>
 	</head>
 <body>
 
-
-
-<style>.fi-social-facebook{color:dodgerblue;font-size:2rem;}.fi-social-youtube{color:red;font-size:2rem;}.fi-social-pinterest{color:darkred;font-size:2rem;}i.fi-social-instagram{color:brown;font-size:2rem;}i.fi-social-tumblr{color:navy;font-size:2rem;}.fi-social-twitter{color:skyblue;font-size:2rem;}</style>
 <header>
 
 <?php
@@ -56,8 +50,6 @@
     
 
     mysqli_query($con,$sql);
-	
-
 
 ?>
 
@@ -82,11 +74,10 @@
 	<div class="row expanded" align = "center">
         <h2> Cliente adicionado com sucesso! </h2>
         <a class="button success" href="./clientes.php"><i class = "fi-arrow-left "></i> Voltar à página de clientes</a>
-
-
 	</div>
 </div>
 
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
 <script>
       $(document).foundation();

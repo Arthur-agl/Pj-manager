@@ -3,19 +3,13 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Project Manager 0.0.1</title>
+    <title>Project Manager 1.0.1</title>
     <link rel="stylesheet" href="./css/foundation.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel='stylesheet' type='text/css'>
 	<?php include "./connect.php"?>
 	</head>
+	
 <body>
-
-
-
-<style>.fi-social-facebook{color:dodgerblue;font-size:2rem;}.fi-social-youtube{color:red;font-size:2rem;}.fi-social-pinterest{color:darkred;font-size:2rem;}i.fi-social-instagram{color:brown;font-size:2rem;}i.fi-social-tumblr{color:navy;font-size:2rem;}.fi-social-twitter{color:skyblue;font-size:2rem;}</style>
-<header>
-
-
 
 <div class="top-bar">
   <div class="top-bar-left">
@@ -30,7 +24,24 @@
 
 </header>
 
-<div class="row"><h3 class = "alert" align = "center"><strong>Próximos projetos para entrega</strong></h3></div>
+<div class="row expanded callout success"><h3 class = "alert" align = "center"><strong>Próximos projetos para entrega</strong></h3></div>
+
+<div class="row expanded">
+	<ul class="accordion" data-accordion data-allow-all-closed="true">
+		<li class="accordion-item" data-accordion-item>
+    
+			<a href="#" class="accordion-title">Referência rápida</a>
+			
+			<div class="accordion-content" data-tab-content>
+			  <p><strong><i class="fi-home"></i> Home:</strong><br>Aqui você visualiza os projetos que precisam de atenção.</p>
+			  <p><strong><i class="fi-torsos-all"></i> Clientes:</strong><br>Aqui você visualiza seus clientes e adiciona novos clientes, ou novos projetos a um cliente já existente.</p>
+			  <p>Como fazer: crie um novo cliente ou selecione Editar. Na página seguinte preencha o formulário com os dados sobre seu cliente/projeto.</p>
+			  <p><strong><i class="fi-page-copy"></i> Projetos:</strong><br>Aqui você pode visualizar seus projetos.</p>
+			</div>
+		</li>
+	</ul>
+ </div>
+ 
 	<div class="panel callout radius primary">
 		
 		<div class="row expanded">
@@ -63,16 +74,17 @@
 					echo "</tr>";
 				}
 				echo "</tbody>
-				</table>"; ?>
+				</table>"; 
+			?>
 		</div>
 	</div>
-	
-	
-			<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
 		<script>
 			$(document).foundation();
 		</script>
 		<script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
+		
 </body>
 </html>
