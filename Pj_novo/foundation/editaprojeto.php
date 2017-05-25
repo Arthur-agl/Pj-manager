@@ -6,7 +6,9 @@
     <title>Project Manager 1.0.1</title>
     <link rel="stylesheet" href="./css/foundation.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel='stylesheet' type='text/css'>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+
     <?php
 	    include './connect.php';
 	?>
@@ -96,7 +98,7 @@
 </div>
 <a class="button expanded" href = "./projetos.php">Voltar</a>
 
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
 <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
 <script>
       $(document).foundation();
